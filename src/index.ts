@@ -7,6 +7,9 @@ import { createMission } from "./endpoints/createMission";
 import { createStudent } from "./endpoints/createStudent";
 import { createTeacher } from "./endpoints/createTeacher";
 import { searchById } from "./endpoints/searchById";
+import { removeStudent } from './endpoints/removeStudent';
+import { removeStudentMission } from './endpoints/removeStudentMission';
+import { removeTeacherMission } from './endpoints/removeTeacherMission';
 
 dotenv.config();
 
@@ -32,6 +35,12 @@ app.post("/create/teacher", createTeacher);
 app.post("/create/mission", createMission);
 
 app.get("/student/:id", searchById);
+
+app.delete("/remove/student/:id", removeStudent);
+
+app.delete("/remove/mission/student/:id", removeStudentMission);
+
+app.delete("/remove/mission/teacher/:id", removeTeacherMission);
 
 const server = app.listen(process.env.PORT || 3003, () => {
     if (server) {
