@@ -1,19 +1,14 @@
 import { Request, Response } from "express";
 import { removeStudentData } from "../data/removeStudentData";
 
-export const removeStudent = async (req: Request, res: Response):Promise<void> => {
+export const removeStudent = async (req: Request, res: Response): Promise<void> => {
    try {
 
       const result = await removeStudentData(Number(req.params.id))
 
-      if (!result) {
-         res.statusCode = 404
-         throw new Error("Sem resultados!")
-     }
-
-     res.status(200).send({chaveDoRetorno: "Aluno excluido com sucesso!"});
-     console.log(result)
+      res.status(200).send({ chaveDoRetorno: "Aluno excluido com sucesso!" });
+      
    } catch (error) {
-      res.send(400).send(error.message)
+      res.status(400).send(error.message)
    }
 }
