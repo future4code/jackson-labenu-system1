@@ -1,10 +1,10 @@
 import { Request, Response } from 'express';
-import { searchByIdData } from "../data/searchByIdData"
+import { searchAgeByIdData } from "../data/searchAgeByIdData"
 
-export const searchById = async (req: Request, res: Response) => {
+export const searchAgeById = async (req: Request, res: Response) => {
     console.log(req.params.id)
     try {
-        const result = await searchByIdData(req.params.id);
+        const result = await searchAgeByIdData(req.params.id);
 
         if (!result) {
             res.statusCode = 404
